@@ -3,14 +3,14 @@
  * faits métier qui terminent le suivi (remboursement complet, décision de désinvestir).
  */
 import { randomUUID } from 'node:crypto';
-import { enTantQue } from '@maestro/client-backbone';
-import { demarrerApp, e, msg } from '@maestro/kit-app';
+import { enTantQue } from '@maestro/sdk/client';
+import { demarrerApp, e, msg } from '@maestro/sdk/kit';
 
 await demarrerApp({
   id: 'suivi-periodique',
   nom: 'Suivi périodique',
-  port: 4104,
-  jeton: 'demo-jeton-suivi-periodique',
+  port: Number(process.env.PORT ?? 4104),
+  jeton: process.env.JETON_APP ?? 'demo-jeton-suivi-periodique',
   couleur: '#b36b00',
   utilisateurParDefaut: 'kevin',
   accueil: async ({ client, utilisateur }) => {
